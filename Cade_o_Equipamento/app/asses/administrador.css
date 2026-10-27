@@ -1,0 +1,163 @@
+/* CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    /* Cor azul claro puxando para o lilás */
+    background-color: #e2e5ff; 
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* CONTAINER CENTRAL DA TELA */
+.painel-central {
+    width: 100%;
+    max-width: 550px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Espaço entre as seções */
+}
+
+/* ESTILIZAÇÃO DOS TÍTULOS */
+h1 {
+    font-size: 2rem;
+    color: #1e293b;
+    margin-bottom: -15px; /* Aproxima do h2 */
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 1.25rem;
+    color: #64748b;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+/* BLOCOS DE INPUT (Sem o fundo branco anterior) */
+.bloco-sem-fundo {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* CAMPO DE ENTRADA DE TEXTO */
+.campo-grupo {
+    width: 100%;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border: 2px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+    color: #334155;
+}
+
+/* Estilização do texto cinza dentro do campo (Placeholder) */
+input[type="text"]::placeholder {
+    color: #64748b;
+    font-weight: 500;
+}
+
+input[type="text"]:focus {
+    border-color: #818cf8; /* Destaque azul lilás ao clicar */
+}
+
+/* BOTÕES */
+.btn {
+    width: 100%;
+    padding: 14px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-salvar {
+    background-color: #0aaa25;
+}
+
+.btn-salvar:hover {
+    background-color: #0aaa25;
+}
+
+.btn-retirar {
+    background-color: #0aaa25;
+};
+
+
+.btn-retirar:hover {
+    background-color: #0aaa25;
+}
+
+/* CAIXA DA TABELA */
+.tabela-container {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    margin-top: 10px;
+}
+
+/* TÍTULO DA TABELA ALINHADO PARA O LADO DIREITO */
+.titulo-tabela-direita {
+    text-align: right;
+    font-size: 1.2rem;
+    color: #334155;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* ESTRUTURA DA TABELA */
+.tabela-responsiva {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+}
+
+td {
+    color: #334155;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}

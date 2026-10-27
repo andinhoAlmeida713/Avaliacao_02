@@ -1,0 +1,129 @@
+/* CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #e2e5ff; 
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    padding: 60px 20px 20px 20px; /* Voltou para os 60px de antes (altura original) */
+}
+
+/* CONTAINER CENTRAL DA TELA DE LOGIN */
+.painel-login {
+    width: 100%;
+    max-width: 600px; /* Mantido largo para o título caber em linha única */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+/* ESTILIZAÇÃO DO TÍTULO PRINCIPAL NO TOPO */
+.titulo-topo {
+    font-size: 2.2rem;
+    color: #1e293b;
+    font-weight: 700;
+    margin-top: 20px; /* Voltou para a margem de antes */
+    margin-bottom: 25px;
+    white-space: nowrap; /* Força o texto a aparecer todo em uma linha só */
+}
+
+/* TEXTOS INDICADORES DE SEÇÃO */
+h2 {
+    font-size: 1.25rem;
+    color: #475569;
+    font-weight: 600;
+    text-align: left;
+}
+
+/* BLOCOS DE CONTEÚDO */
+.bloco-login-secao {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 450px; /* Mantém as caixas de login no tamanho padrão anterior */
+    width: 100%;
+    margin: 0 auto; 
+}
+
+/* CAMPOS DE ENTRADA (USUÁRIO E SENHA) */
+.campo-grupo {
+    width: 100%;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border: 2px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+    color: #334155;
+}
+
+input::placeholder {
+    color: #64748b;
+    font-weight: 500;
+}
+
+input:focus {
+    border-color: #818cf8;
+}
+
+/* ESTILO BASE DOS BOTÕES */
+.btn {
+    padding: 14px 24px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Botão Cadastrar */
+.btn-cadastro {
+    background-color: #0aaa25;
+    width: 100%;
+}
+
+.btn-cadastro:hover {
+    background-color: #0aaa25;
+}
+
+/* ALINHAMENTO DO BOTÃO ENTRAR À DIREITA */
+.container-botao-direita {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* Botão Entrar */
+.btn-entrar {
+    background-color: #0aaa25;
+    min-width: 140px;
+}
+
+.btn-entrar:hover {
+    background-color: #0aaa25;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque e Pedidos - Almoxarifado de Tecnologia</title>
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <!-- O Flask busca os arquivos CSS dentro de uma pasta chamada 'static' -->
+    <link rel="stylesheet" href=".//asses/pedido-estoque.css">
+</head>
+<body>
+
+    <main class="painel-principal">
+        <h1 class="titulo-topo">Almoxarifado de Tecnologia</h1>
+        <h2>Estoque Materiais</h2>
+
+        <!-- 1. TABELA PRINCIPAL DE ESTOQUE -->
+        <section class="tabela-container">
+            <div class="tabela-rolagem-grande">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Materiais</th>
+                            <th>Disponíveis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>#001</td><td>Notebook Dell Inspiron</td><td>15 unidades</td></tr>
+                        <tr><td>#002</td><td>Mouse Sem Fio Logitech</td><td>42 unidades</td></tr>
+                        <tr><td>#003</td><td>Cabo HDMI 2m</td><td>28 unidades</td></tr>
+                        <tr><td>#004</td><td>Teclado Mecânico USB</td><td>10 unidades</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 2. SEÇÃO PEDIR (Agora envia dados para o Python via POST) -->
+        <section class="bloco-formulario-pedido">
+            <h3 class="titulo-esquerda">Pedir</h3>
+            <form action="/adicionar" method="POST" class="linha-campos">
+                <input type="text" name="id_pedido" placeholder="ID" required>
+                <input type="text" name="data_devolucao" placeholder="Data de devolução" required>
+                <button type="submit" class="btn-adicionar">
+                    <i class="fa-solid fa-plus"></i> Adicionar
+                </button>
+            </form>
+        </section>
+
+        <!-- 3. SEÇÃO LISTA DO PEDIDO -->
+        <section class="bloco-lista-pedido">
+            <h3 class="titulo-esquerda">Lista do Pedido</h3>
+            
+            <div class="container-tabela-botao">
+                <div class="tabela-container-pequena">
+                    <div class="tabela-rolagem-pequena">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Material</th>
+                                    <th>Data de Entrega</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- O Python (Flask) vai ler a lista e desenhar as linhas aqui -->
+                                {% for item in lista_pedidos %}
+                                <tr>
+                                    <td>#{{ item.id }}</td>
+                                    <td>{{ item.material }}</td>
+                                    <td>{{ item.data }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Botão envia para a rota do Python que limpa e finaliza -->
+                <form action="/solicitar" method="POST">
+                    <button type="submit" class="btn-solicita">
+                        <i class="fa-solid fa-paper-plane"></i> Solicita
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

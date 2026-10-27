@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Almoxarifado de Tecnologia</title>
+    <!-- Ícones para os botões -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="../app/asses/login.css">
+</head>
+<body>
+
+    <main class="painel-login">
+        <!-- Título principal na altura antiga e em uma linha só -->
+        <h1 class="titulo-topo">Almoxarifado de Tecnologia</h1>
+
+        <!-- 1. SEÇÃO CADASTRAR USUÁRIO -->
+        <section class="bloco-login-secao">
+            <h2>Cadastrar Usuario</h2>
+            <button type="button" class="btn btn-cadastro" onclick="alert('Redirecionando para a tela de cadastro...')">
+                <i class="fa-solid fa-user-plus"></i> Cadastrar
+            </button>
+        </section>
+
+        <!-- 2. SEÇÃO LOGIN -->
+               <!-- 2. SEÇÃO LOGIN -->
+        <section class="bloco-login-secao">
+            <h2>Login</h2>
+            
+            <!-- Adicionado a tag form apontando para a sua rota Python -->
+            <form action="/auth/login" method="POST">
+                
+                <div class="campo-grupo">
+                    <!-- IMPORTANTE: Adicionado name="email" -->
+                    <input type="text" id="usuario" name="email" placeholder="E-mail" required>
+                </div>
+                
+                <div class="campo-grupo" style="margin-top: 15px;">
+                    <!-- IMPORTANTE: Adicionado name="senha" -->
+                    <input type="password" id="senha" name="senha" placeholder="Senha" required>
+                </div>
+
+                <!-- Área que empurra o botão Entrar para o lado direito -->
+                <div class="container-botao-direita">
+                    <button type="submit" class="btn btn-entrar">
+                        Entrar <i class="fa-solid fa-right-to-bracket"></i>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+</body>
+</html>

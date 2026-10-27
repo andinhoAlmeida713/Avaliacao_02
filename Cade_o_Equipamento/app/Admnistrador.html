@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almoxarifado de Tecnologia</title>
+    <!-- Ícones decorativos para os botões -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="../app/asses/administrador.css">
+</head>
+<body>
+
+    <main class="painel-central">
+        <!-- Títulos principais -->
+        <h1>Almoxarifado de Tecnologia</h1>
+        <h2>Administrador</h2>
+
+        <!-- 1. BLOCO DE CADASTRO (Sem container branco) -->
+        <section class="bloco-sem-fundo">
+            <div class="campo-grupo">
+                <!-- O texto agora aparece dentro do próprio campo -->
+                <input type="text" id="equipamento" placeholder="Cadastrar Equipamento">
+            </div>
+
+            <button type="button" class="btn btn-salvar">
+                <i class="fa-solid fa-plus"></i> Salvar Equipamento
+            </button>
+        </section>
+
+        <!-- 2. BLOCO DE MANUTENÇÃO (Sem container branco) -->
+        <section class="bloco-sem-fundo">
+            <div class="campo-grupo">
+                <!-- O texto agora aparece dentro do próprio campo -->
+                <input type="text" id="equipamento-manutencao" placeholder="Retirar para manutenção">
+            </div>
+
+            <button type="button" class="btn btn-retirar">
+                <i class="fa-solid fa-wrench"></i> Registrar Retirada
+            </button>
+        </section>
+
+        <!-- 3. TABELA DE MANUTENÇÃO (Mantida com fundo para leitura) -->
+        <section class="tabela-container">
+            <h3 class="titulo-tabela-direita">Lista Manutenção</h3>
+            
+            <div class="tabela-responsiva">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Equipamento</th>
+                            <th>Unidade</th>
+                            <th>Defeito</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monitor LG 24"</td>
+                            <td>TI - Central</td>
+                            <td>Tela piscando</td>
+                        </tr>
+                        <tr>
+                            <td>Impressora HP</td>
+                            <td>Financeiro</td>
+                            <td>Não puxa papel</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

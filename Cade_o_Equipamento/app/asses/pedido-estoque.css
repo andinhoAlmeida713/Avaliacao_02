@@ -1,0 +1,215 @@
+/* CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #e2e5ff; 
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    padding: 60px 20px 40px 20px;
+}
+
+/* CONTAINER CENTRAL DA TELA */
+.painel-principal {
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* ESTILIZAÇÃO DOS TÍTULOS */
+.titulo-topo {
+    font-size: 2.2rem;
+    color: #1e293b;
+    font-weight: 700;
+    margin-top: 20px;
+    white-space: nowrap;
+}
+
+h2 {
+    font-size: 1.25rem;
+    color: #64748b;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: #334155;
+    font-weight: 600;
+}
+
+/* ALINHAMENTO PADRÃO PARA A ESQUERDA */
+.titulo-esquerda {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+/* ESTILO GERAL DAS CAIXAS BRANCAS DAS TABELAS */
+.tabela-container, .tabela-container-pequena {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+/* ROLAGEM DA TABELA SUPERIOR (ESTOQUE) */
+.tabela-rolagem-grande {
+    max-height: 160px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* ROLAGEM DA TABELA INFERIOR (LISTA DO PEDIDO) */
+.tabela-rolagem-pequena {
+    max-height: 130px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* DESIGN INTERNO DAS TABELAS */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+th, td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    background-color: #ffffff;
+    color: #475569;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+td {
+    color: #334155;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Personalização sutil das barras de rolagem */
+.tabela-rolagem-grande::-webkit-scrollbar, .tabela-rolagem-pequena::-webkit-scrollbar {
+    width: 6px;
+}
+.tabela-rolagem-grande::-webkit-scrollbar-thumb, .tabela-rolagem-pequena::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+/* FORMULÁRIO PEDIR (Campos em linha) */
+.bloco-formulario-pedido {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.linha-campos {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.linha-campos input[type="text"] {
+    padding: 12px;
+    font-size: 0.95rem;
+    background-color: #ffffff;
+    border: 2px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+    color: #334155;
+    transition: border-color 0.2s;
+}
+
+#id-pedido {
+    width: 80px;
+}
+
+#data-devolucao {
+    flex: 1;
+}
+
+.linha-campos input:focus {
+    border-color: #818cf8;
+}
+
+/* BOTÃO LARANJA (ADICIONAR) */
+.btn-adicionar {
+    background-color: #ea580c;
+    color: #ffffff;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.btn-adicionar:hover {
+    background-color: #c2410c;
+}
+
+/* ESTRUTURA PARA ALINHAR TABELA E BOTÃO SOLICITA LADO A LADO */
+.bloco-lista-pedido {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.container-tabela-botao {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.container-tabela-botao .tabela-container-pequena {
+    flex: 1;
+}
+
+/* BOTÃO VERDE (SOLICITA ALINHADO À DIREITA) */
+.btn-solicita {
+    background-color: #16a34a;
+    color: #ffffff;
+    padding: 14px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 50px;
+    white-space: nowrap;
+}
+
+.btn-solicita:hover {
+    background-color: #15803d;
+}

@@ -1,45 +1,24 @@
+
 from sqlmodel import create_engine, Session
 from sshtunnel import SSHTunnelForwarder
 from config.Config import settings
 from dataclasses import dataclass
-import urllib.parse
-
+import urllib
 @dataclass
 class Database:
+
     _server: SSHTunnelForwarder | None = None
     _engine = None
 
     def __post_init__(self):
-        self.start_tunnel()
+        """ Procedimentos que devem ser executados após a criação do objeto. 
+            É executado apor a função __init__
+        """
+        self._tunnel = self.start_tunnel()
 
-    def start_tunnel(self) -> None:
-        params = self._build_ssh_params()
-        
-        self._server = SSHTunnelForwarder(
-            params["ssh_host"],
-            ssh_username=params["ssh_username"],
-            ssh_password=params.get("ssh_password"),
-            ssh_pkey=params.get("ssh_pkey"),
-            remote_bind_address=params["remote_bind_address"]
-        )
-        self._server.start()
-        
-        encoded_password = urllib.parse.quote_plus(settings.db_password)
-        url = (
-            f"mysql+pymysql://{settings.db_user}:{encoded_password}"
-            f"@127.0.0.1:{self._server.local_bind_port}/{settings.db_name}"
-            f"?charset=utf8mb4"
-        )
-
-        self._engine = create_engine(
-            url,                      
-            echo=True,                
-            pool_pre_ping=True,       
-            pool_recycle=1800,        
-            pool_size=5,              
-        )
 
     def _build_ssh_params(self) -> dict:
+        """Monta os parâmetros do túnel conforme o tipo de autenticação."""
         params = {
             "ssh_host": (settings.ssh_host, settings.ssh_port),
             "ssh_username": settings.ssh_user,
@@ -51,14 +30,47 @@ class Database:
             params["ssh_password"] = settings.ssh_password
         else:
             raise ValueError("Defina SSH_KEY_PATH ou SSH_PASSWORD no .env")
+
         return params
 
+
+    def start_tunnel(self) -> None:
+        """Abre o túnel SSH e inicializa o engine SQLModel."""
+        self._server = SSHTunnelForwarder(
+            (settings.ssh_host, settings.ssh_port),
+            ssh_username=settings.ssh_user,            
+            ssh_password=settings.ssh_password,              
+            remote_bind_address=(settings.db_host, settings.db_port)  
+            )
+        self._server.start()
+        encoded_password = urllib.parse.quote_plus(settings.db_password) ##necessário para senhas que contenham caracteres especiais
+        url = (
+            f"mysql+pymysql://{settings.db_user}:{encoded_password}"
+            f"@127.0.0.1:{self._server.local_bind_port}/{settings.db_name}"
+            f"?charset=utf8mb4"
+        )
+
+        self._engine = create_engine(
+            url,                      #url de conexão
+            echo=True,                # Registrar todos os comandos encaminhados
+            pool_pre_ping=True,       # valida conexão antes de reutilizar
+            pool_recycle=1800,        # recicla conexões a cada 30 min
+            pool_size=5,              # numero máximo de conexões simultâneas
+        )
+        if not self._engine:
+            raise ConnectionError("Erro na conexão do banco de dados")
     def stop_tunnel(self) -> None:
+        """Fecha o engine e encerra o túnel SSH."""
+
         if self._engine:
             self._engine.dispose()
-        if self._server and self._server.is_active:
-            self._server.stop()
+
+        if self._tunnel and self._tunnel.is_active:
+            self._tunnel.stop()
 
     def get_db(self):
-        with Session(self._engine) as session:
-            yield session
+        try:
+            with Session(self._engine) as session:
+                yield session
+        finally:
+            session.close()
